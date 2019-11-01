@@ -1,0 +1,11 @@
+{
+  "name": "talent-monitor",
+  "version": "1.0.0",
+  "description": "监控体制外单位填报情况",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "qiong1999",
+  "license": "ISC"
+}
