@@ -4,8 +4,14 @@
   "description": "监控体制外单位填报情况",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
   },
   "author": "qiong1999",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.7.7",
+    "node-xlsx": "^0.15.0",
+    "saslprep": "^1.0.3",
+    "single-line-log": "^1.1.2"
+  }
 }
