@@ -6,7 +6,7 @@ class NonConstitution {
     this.analyzer = [];
   }
   async run(filename, subscript1, subscript2) {
-    const workSheetsFromFile = xlsx.parse(`../Res/${filename}.xlsx`);
+    const workSheetsFromFile = xlsx.parse(`./Res/${filename}.xlsx`);
     let i = 0;
     let unstore = 0;
     let store = 0;
@@ -17,7 +17,7 @@ class NonConstitution {
       rowIndex <= workSheetsFromFile[0].data.length
     ) {
       console.log(`${i++}/${workSheetsFromFile[0].data.length}`);
-      
+
       if (!rowIndex) {
         continue;
       }
@@ -48,7 +48,7 @@ class NonConstitution {
     workSheetsFromFile[0].data.unshift(['已暂存', store]);
     workSheetsFromFile[0].data.unshift(['已提交', submit]);
     const buffer = xlsx.build(workSheetsFromFile);
-    fs.writeFileSync(`../Output/${filename}.xlsx`, buffer);
+    fs.writeFileSync(`./Output/${filename}.xlsx`, buffer);
     return {
       filename,
       unstore,
@@ -64,8 +64,4 @@ class NonConstitution {
   }
 }
 
-async function run() {
-  let nonConstitution = new NonConstitution();
-  console.log(await nonConstitution.result());
-}
-run();
+module.exports = NonConstitution;
