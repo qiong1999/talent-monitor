@@ -31,6 +31,9 @@ class Constitution {
   }
 
   async result() {
+    this.noThisId = 0;
+    this.confirmedIsFalse = 0;
+    this.confirmedIsTrue = 0;
     await this.run();
     return {
       noThisId: this.noThisId,

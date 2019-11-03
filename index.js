@@ -11,16 +11,14 @@ const transport = nodemailer.createTransport({
     pass: 'ftmoqpxjixwrbicf',
   },
 });
-
-let date = new Date();
-date = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-
 const Analyzer = require('./Analyzer');
 
 const constitution = new Analyzer.Constitution();
 const nonConstitution = new Analyzer.NonConstitution();
 
 const run = async () => {
+  let date = new Date();
+  date = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
   let a = await constitution.result();
   let b = await nonConstitution.result();
   const mailOptions = {
@@ -39,9 +37,9 @@ const run = async () => {
       },
     ],
     subject: `🍺单位填报情况 ${date}`,
-    html: `<b>体制内填报情况 未暂存 ${a.noThisId}家 已暂存 ${a.confirmedIsFalse}家 已提交 ${a.confirmedIsTrue}家</b>
-    <b>实地调研单位 未暂存 ${b[0].unstore}家 已暂存 ${b[0].store}家 已提交 ${b[0].submit}家</b>
-    <b>重点调研单位 未暂存 ${b[1].unstore}家 已暂存 ${b[1].store}家 已提交 ${b[1].submit}家</b>`,
+    html: `<b>体制内填报情况 未暂存 ${a.noThisId}家 已暂存 ${a.confirmedIsFalse}家 已提交 ${a.confirmedIsTrue}家</b><br>
+    <b>实地调研单位 未暂存 ${b[0].unstore}家 已暂存 ${b[0].store}家 已提交 ${b[0].submit}家</b><br>
+    <b>重点调研单位 未暂存 ${b[1].unstore}家 已暂存 ${b[1].store}家 已提交 ${b[1].submit}家</b><br>`,
   };
   transport.sendMail(mailOptions, (error, info) => {
     if (error) {
